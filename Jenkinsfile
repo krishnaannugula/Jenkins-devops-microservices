@@ -29,4 +29,15 @@ pipeline{
 			
 		}
 	}
+	post{
+		always{
+			echo "I am always awasome,"
+		}
+		success{
+			echo "I run when you are success build ,"
+		}
+		failure{
+			echo "I run when you fail,"
+		}
+	}
 }
