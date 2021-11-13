@@ -11,19 +11,16 @@ pipeline{
 			}
 			
 		}
-	}
-	stages{
+
 		stage("Test"){
-			steps{
-				
+			steps{				
 	
 		echo "Test"
 	
 			}
 			
 		}
-	}
-	stages{
+
 		stage("Integration Test"){
 			steps{
 				
