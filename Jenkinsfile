@@ -53,6 +53,45 @@ pipeline{
 			}
 			
 		}
+		stage("Package"){
+			steps{
+				
+		sh "mvn package -DskipTests"
+			}
+			
+		}
+		stage("Doker_Build"){
+			steps{
+				//DECLARATIVE
+
+				"docker build -t annugulakrishna/currency-exchange-devops:$env.BUILD_TAG"
+				
+				//or as below
+
+				//Scripted
+				
+				script{
+					dockerImage = docke.build("annugulakrishna/currency-exchange-devops:${env.BUILD_TAG}")
+				
+				}			
+		
+			}
+			
+		}
+		stage("Docker_Push"){
+			steps{
+				
+		script{
+				docker.withRegistry('','DockerhubCred'){
+
+				dockerImage.push();
+				dockerImage.push('latest')
+					}
+
+				}
+			}
+			
+		}
 	}
 	post{
 		always{
