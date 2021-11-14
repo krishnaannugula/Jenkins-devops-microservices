@@ -71,7 +71,7 @@ pipeline{
 				//Scripted
 
 				script{
-					dockerImage = docke.build("annugulakrishna/currency-exchange-devops:${env.BUILD_TAG}")
+					dockerImage = docker.build("annugulakrishna/currency-exchange-devops:${env.BUILD_TAG}")
 				
 				}			
 		
